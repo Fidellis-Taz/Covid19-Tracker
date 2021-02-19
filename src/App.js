@@ -10,7 +10,7 @@ import {
 import "./App.css";
 const App = () => {
   const [countries, setCountries] = useState([]);
-
+  const [country, setCountry] = useState("worldwide");
   useEffect(() => {
     //the code inside here will run once
     //when the component loads and not again
@@ -29,6 +29,13 @@ const App = () => {
     };
     getCountriesData();
   }, []);
+  //
+  const onCountryChange = (event) => {
+    const countryCode = event.target.value;
+
+    setCountry(countryCode);
+    /* get details about the country selected  */
+  };
 
   return (
     <div className="app">
@@ -36,7 +43,7 @@ const App = () => {
         <h1>Covid19 Tracker</h1>
         {/* dropdown */}
         <FormControl className="app__dropdown">
-          <Select variant="outlined" value="abc">
+          <Select variant="outlined" value={country} onChange={onCountryChange}>
             {/* loop through all the countries and display them as the droopdown list */}
 
             <MenuItem value="worldwide">Worldwide</MenuItem>

@@ -2,11 +2,11 @@
   margin: 0;
 }
 
-body {
+/* body {
   background-color: #f5f6fa;
-}
+} */
 
-.app {
+/* .app {
   display: flex;
   justify-content: space-evenly;
   background-color: #f5f6fa;
@@ -15,7 +15,7 @@ body {
 
 .app__dropdown {
   background-color: white;
-}
+} */
 
 .app__header {
   display: flex;
@@ -24,11 +24,11 @@ body {
   justify-content: space-between;
 }
 
-.app__header>h1 {
+.app__header > h1 {
   color: #fc3c3c;
   font-size: 2rem;
 }
-
+/* 
 .app__stats {
   display: flex;
   justify-content: space-between;
@@ -53,4 +53,4 @@ body {
   .app {
     flex-direction: column;
   }
-}
+} */
