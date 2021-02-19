@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import Table from "./Table";
 import Map from "./Map";
+import { sortData } from "./util";
 import InfoBox from "./InfoBox";
 import {
   MenuItem,
@@ -13,6 +15,7 @@ const App = () => {
   const [countries, setCountries] = useState([]);
   const [country, setCountry] = useState("worldwide");
   const [countryInfo, setCountryInfo] = useState({});
+  const [tableData, setTableData] = useState([]);
   useEffect(() => {
     //the code inside here will run once
     //when the component loads and not again
@@ -26,7 +29,11 @@ const App = () => {
             name: country.country,
             value: country.countryInfo.iso2,
           }));
+
+          const sortedData = sortData(data);
+
           setCountries(countries);
+          setTableData(sortedData);
         });
     };
     getCountriesData();
@@ -55,6 +62,7 @@ const App = () => {
       .then((data) => {
         setCountry(countryCode);
         //all the data from the country res
+
         setCountryInfo(data);
       });
   };
@@ -104,6 +112,7 @@ const App = () => {
       <Card className="app__right">
         <CardContent>
           <h3>Live Cases by Country</h3>
+          <Table countries={tableData} />
           <h3>Wordworld new cases </h3>
         </CardContent>
       </Card>
